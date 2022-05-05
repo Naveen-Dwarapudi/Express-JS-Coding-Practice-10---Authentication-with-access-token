@@ -1,0 +1,64 @@
+### user login and getting token
+POST http://localhost:3000/login/           
+Content-Type: application/json
+
+{
+    "username": "christopher_phillips",
+    "password": "christy@123"
+}
+
+
+### accessing all states with token
+GET http://localhost:3000/states/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNjUxNzMxNjA2fQ.jAKzkuZozwOZa2LbA17uFx-TWr2SF2ELL-Arh4OblaM
+
+
+### accessing specific state with state id and access token
+GET http://localhost:3000/states/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNjUxNzMxNjA2fQ.jAKzkuZozwOZa2LbA17uFx-TWr2SF2ELL-Arh4OblaM
+
+
+### Creating a district in the district table, district_id is auto-incremented
+POST http://localhost:3000/districts/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNjUxNzMxNjA2fQ.jAKzkuZozwOZa2LbA17uFx-TWr2SF2ELL-Arh4OblaM
+
+{
+  "districtName": "Bagalkot",
+  "stateId": 3,
+  "cases": 2323,
+  "cured": 2000,
+  "active": 315,
+  "deaths": 8
+}
+
+
+### getting  district based on the district ID
+GET http://localhost:3000/districts/3/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNjUxNzMxNjA2fQ.jAKzkuZozwOZa2LbA17uFx-TWr2SF2ELL-Arh4OblaM
+
+
+### Deletes a district from the district table based on the district ID
+DELETE http://localhost:3000/districts/3/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNjUxNzMxNjA2fQ.jAKzkuZozwOZa2LbA17uFx-TWr2SF2ELL-Arh4OblaM
+
+
+### Updating the details of a specific district based on the district ID 
+PUT http://localhost:3000/districts/3/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNjUxNzMxNjA2fQ.jAKzkuZozwOZa2LbA17uFx-TWr2SF2ELL-Arh4OblaM
+
+{
+  "districtName": "Nadia",
+  "stateId": 3,
+  "cases": 9628,
+  "cured": 6524,
+  "active": 3000,
+  "deaths": 104
+}
+
+
+### getting statistics of total cases, cured, active, deaths of a specific state based on state ID
+GET http://localhost:3000/states/6/stats/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzdG9waGVyX3BoaWxsaXBzIiwiaWF0IjoxNjUxNzMxNjA2fQ.jAKzkuZozwOZa2LbA17uFx-TWr2SF2ELL-Arh4OblaM
